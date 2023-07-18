@@ -2,9 +2,13 @@ const express = require("express");
 const {connection}=require("./config/db");
 const {userRoutes}=require('./Routes/user.routes')
 require("dotenv").config();
-
+const {doctorRouter}=require("./Routes/doctor.routes");
 const app=express();
 app.use(express.json());
+
+
+app.use("/doctor",doctorRouter)
+
 app.use('/user',userRoutes)
 // 1) userRoutes
 // 2) doctor Routes
