@@ -1,12 +1,12 @@
 const express = require("express");
 const {connection}=require("./config/db");
 require("dotenv").config();
-
+const {doctorRouter}=require("./Routes/doctor.routes");
 const app=express();
 app.use(express.json());
 
-// 1) userRoutes
-// 2) doctor Routes
+app.use("/doctor",doctorRouter)
+
 
 
 
