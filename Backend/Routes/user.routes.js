@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const {BlacklistModel}=require('../Model/Blacklist.model');
 const {authMiddleware}=require('../Middleware/Auth.middleware')
-
+const {User_appointmentModel}=require('../Model/User_Appointment.model')
 
 userRoutes.post('/register',async(req,res)=>{
     try {
@@ -33,7 +33,6 @@ userRoutes.post('/login',async(req,res)=>{
     try {
         const { email, password } = req.body;
         const user = await UserModel.findOne({ email }); 
-        console.log(user)
         if (!user) {
           return res.status(401).json({ msg: 'Invalid username or password' });
         }
@@ -69,7 +68,21 @@ userRoutes.post('/logout' ,async (req, res) => {
     
     }
   });
+userRoutes.post('/appointment',authMiddleware,async(req,res)=>{
+  try {
+    const { username,email,mobile,city,petname,species,breed,age,gender,weight,resaon,date,time,urgency_level,note,doctor_id} =req.body;
+    const adddata=new User_appointmentModel({ username,email,mobile,city,petname,species,breed,age,gender,weight,resaon,  date,time,urgency_level,note,doctor_id})
+        await adddata.save()
+        res.status(200).json({ msg: 'Appointment booking successfully' });
 
+  } catch (error) {
+    res.status(400).json({
+      isError:true,
+      msg:"Something went wrong !!!!",
+      error:error
+  });
+  }
+})
 module.exports={
     userRoutes
 }
