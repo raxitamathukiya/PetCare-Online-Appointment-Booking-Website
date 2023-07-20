@@ -142,6 +142,26 @@ doctorRouter.get("/search",async(req,res)=>{
 
 //find perticular doctor by params
 
+doctorRouter.get("/:id",async(req,res)=>{
+    const {id}=req.params;
+    try {
+        
+        const data= await DoctorModel.find({_id:id});
+        
+        res.status(200).json({
+            isError:false,
+            data:data
+            
+        });
+        
+    } catch (error) {
+        res.status(404).json({
+            isError:true,
+            msg:"Did not get Data",
+            error:error
+        });
+    }
+});
 
 
 
