@@ -9,6 +9,7 @@ const {BlacklistModel}=require("../Model/Blacklist.model");
 const {auth}=require("../Middleware/auth.doctors.middleware");
 const {transporter}=require("../Middleware/nodemailer");
 
+
 doctorRouter.post("/register", async (req,res)=>{
     const {email,password}=req.body;
     try {
@@ -167,30 +168,57 @@ doctorRouter.get("/:id",async(req,res)=>{
 
 // send mail  
 
-doctorRouter.post("/sendmail/:id",async(req,res)=>{
-    const id=req.params.id;
-    const {email,UserID,name}=req.body;
+doctorRouter.post("/sendmail",async(req,res)=>{
+    // const id=req.params.id;
+    const {status}=req.query;
+    const {email,date,time,name,doctor_id,is_conform,_id}=req.body;
     
     try{
-
-        const Appoint_ID=Math.floor((Math.random()*100000000)+1);
+        const data= await DoctorModel.findOne({_id:doctor_id});
         
-        let mailOptions = {
-            from: 'sambhajisd4@gmail.com',
-            to: email,
-            subject: 'Appointment Confirmed',
-            text: `YOUR Appointment is confirmed by Dr. ${name}
-            OPPOINTMENT DETAILS :-
+        const Appoint_ID=Math.floor((Math.random()*100000000)+1);
+        let mailOptions;
+        if(status=="true"){
+            const changedata= await User_appointmentModel.findByIdAndUpdate(_id,{is_conform:"confirm"});
 
-            Appointment ID  :-  ${Appoint_ID}
-            Date :- ${date}
-            Time :- ${time}
+             mailOptions = {
+                from: 'sambhajisd4@gmail.com',
+                to: email,
+                subject: 'Appointment CONFIRMED',
+                text: `
+                Hello ${name},
+                YOUR Appointment is confirmed by Dr. ${data.name}
+                OPPOINTMENT DETAILS :-
+    
+                Appointment ID  :-  ${Appoint_ID}
+                Date :- ${date}
+                Time :- ${time}
+    
+                    thank you
+                     PetCare
+                `
+            };
+    
+        }else{
+           
+            const changedata= await User_appointmentModel.findByIdAndUpdate(_id,{is_conform:"cancled"});
 
-                thank you
-                 PetCare
-            `
-        };
-
+             mailOptions = {
+                from: 'sambhajisd4@gmail.com',
+                to: email,
+                subject: 'Appointment CANCLED',
+                text: `
+                Hello ${name},
+                YOUR Appointment is cancled by Dr. ${data.name}
+                
+                please book appoint for other date.
+    
+                    thank you
+                     PetCare
+                `
+            };
+        }
+        
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
                 res.send('Error sending email');
@@ -204,6 +232,10 @@ doctorRouter.post("/sendmail/:id",async(req,res)=>{
         res.status(401).send(err);
     }
 })
+
+// find total booking of perticular doctor
+// find all confirm appointment
+// find all pending appointment
 
 
 
