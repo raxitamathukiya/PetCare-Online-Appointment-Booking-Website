@@ -9,16 +9,19 @@ const authMiddleware = async(req, res, next) => {
     if (isBlacklisted) {
       return res.status(401).send('Token is blacklisted');
     }
-    const decodedToken = jwt.verify(token, 'raxita');
+    const decodedToken = jwt.verify(token, process.env.SecretKey);
+    
     const { userId } = decodedToken;
-    const user = await UserModel.findById({userId});
+  
+    const user = await UserModel.findOne({_id:userId});
+  
     if (!user) {
       return res.status(401).json({ message: 'Unauthorized' });
     }
-    req.user = user;
+    req.body.user = user;
     next();
   } catch (error) {
-    return res.status(401).json({ message: 'Unauthorized' });
+    return res.status(401).json({ message: 'Unauthorized error' });
   }
 };
 

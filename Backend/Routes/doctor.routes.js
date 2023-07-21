@@ -72,7 +72,7 @@ doctorRouter.post("/login",async(req,res)=>{
     }
 });
 
-doctorRouter.get("/",auth,async(req,res)=>{
+doctorRouter.get("/",async(req,res)=>{
     try {
         const data= await DoctorModel.find();
         res.status(200).json({

@@ -3,10 +3,16 @@ const {connection}=require("./config/db");
 const {userRoutes}=require('./Routes/user.routes')
 require("dotenv").config();
 const {doctorRouter}=require("./Routes/doctor.routes");
-const app=express();
+const { setupSocket } = require('./socket'); // Import the setupSocket function
+
+const app = express();
 app.use(express.json());
+const server = require('http').createServer(app);
+
+setupSocket(server); 
 
 
+  
 app.use("/doctor",doctorRouter)
 
 app.use('/user',userRoutes)
@@ -15,7 +21,7 @@ app.use('/user',userRoutes)
 
 
 
-app.listen(process.env.PORT,async()=>{
+server.listen(process.env.PORT,async()=>{
     try {
         connection;
         console.log("connected to DB");
