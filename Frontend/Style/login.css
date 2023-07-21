@@ -1,0 +1,199 @@
+.fd {
+    background-color: #262a3b !important;
+    height: 80px;
+    text-align: center;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.fd img {
+    width: 9%;
+    margin-top: 1%;
+}
+
+#container {
+    width: 35%;
+    margin: auto;
+    margin-top: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+#input1,
+#input2 {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    border: 0.5pt solid black;
+    padding-left: 20px;
+    font-size: 15px;
+}
+
+.cen {
+    text-align: center;
+
+}
+
+#button {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+#b1 {
+    width: 250px;
+    font-weight: bold;
+    font-size: 15px;
+    height: 50px;
+    justify-content: center;
+    border-radius: 10px;
+    border: 1px solid white;
+    color: white;
+    background-color: #006064;
+    cursor: pointer;
+
+}
+
+.in {
+    margin-bottom: 10px;
+    padding: 0px;
+    font-size: 20px;
+}
+
+#ifd {
+    width: 80%;
+    margin: auto;
+
+}
+
+#signup {
+    display: block;
+    margin-top: 0px;
+    padding-bottom: 40px;
+}
+
+#forgot {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+#p {
+    display: block;
+    margin: 3px;
+}
+
+.ank {
+    font-size: 15pt;
+    color: #006064;
+}
+
+#welcome {
+    padding-top: 40px;
+}
+
+body {
+    background-color: white;
+
+}
+
+#container {
+    position: relative;
+
+
+}
+
+#container .loginhovershow {
+    position: absolute;
+    top: 20%;
+    visibility: visible;
+    opacity: 1;
+    background-color: red;
+    transform: 4s;
+    z-index: 1;
+
+}
+
+#container .containershow {
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+#loginhover {
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    left: 0;
+    top: 30%;
+    box-shadow: 0px 0px 10px 3px #ccc;
+    /* visibility:  */
+    transform: 4s;
+    visibility: hidden;
+
+
+}
+
+#loginhover input {
+    width: 100%;
+}
+
+#loginhover span {
+    position: absolute;
+    right: 0px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    color: white;
+    background-color: green;
+    text-align: center;
+    top: 0px;
+}
+.google-sign-in {
+    margin-top: 15px;
+    background: #5886d4;
+    border-radius: 0.1875rem;
+    border: none;
+    clear: both;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    height: 40px;
+    text-align: center;
+    padding: 0;
+    position: relative;
+    white-space: nowrap;
+    width: 80%;
+    font-weight: 500;
+}
+
+.google-sign-in .icon {
+    -webkit-border-top-left-radius: 0.09375rem;
+    border-top-left-radius: 0.09375rem;
+    -webkit-border-bottom-left-radius: 0.09375rem;
+    border-bottom-left-radius: 0.09375rem;
+    background-color: #fff;
+    background-image: url(//static.hsappstatic.net/LoginUI/static-1.7574/img/google-logo.png);
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: 24px;
+    height: 38px;
+    left: 1px;
+    position: absolute;
+    top: 1px;
+    vertical-align: middle;
+    width: 38px;
+}
+
+.google-sign-in .buttonText {
+    display: inline-block;
+    font-family: Roboto, sans-serif;
+    font-weight: 500;
+    margin-top: 9px;
+    vertical-align: middle;
+}

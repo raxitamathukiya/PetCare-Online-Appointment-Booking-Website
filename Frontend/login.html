@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./Style/login.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"
+        integrity="sha256-2Dbg51yxfa7qZ8CSKqsNxHtph8UHdgbzxXF9ANtyJHo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.min.css"
+        integrity="sha256-7jUS+MWeqkFdmW9ozkZ7mPagz+QmMbsBlt+Q3MsE+FU=" crossorigin="anonymous">
+    
+</head>
+
+<body>
+    <h1 style="color: rgb(247, 67, 67); text-align: center;cursor: pointer;" id="bshub">Login</h1>
+    <div id="container">
+        <div>
+            <h1 id="welcome" class="cen">Welcome Back</h1>
+        </div>
+        <div id="ifd">
+            <h4 class="in">Email Address</h4>
+            <input id="input1" type="email" placeholder="Username">
+            <h4 class="in">Password</h4>
+            <input id="input2" type="password" placeholder="Password">
+            <div class="cen">
+                <div id="button"><button id="b1">LOG IN</button></div>
+                <div>
+                    <a class="google-sign-in" href="http://localhost:8080/user/auth/google"><span
+                            class="icon"></span><span class="buttonText">Sign in
+                            with Google</span></a>
+
+                </div>
+                <a id="forgot" href="./forgotpassword.html">Forgot your password?</a>
+                <div id="loginhover">
+                    <span>&times;</span>
+                    <div>h1</div>
+                    <div><input type="email"></div>
+                    <button style="color: white;border-radius: 10px;">RESET PASSWORD</button>
+                </div>
+
+                <p id="p">Not a member?</p>
+                <a id="signup" class="ank" href="signup.html">Sign Up</a>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+<script src="./js/login.js"></script>
+
+</html>
