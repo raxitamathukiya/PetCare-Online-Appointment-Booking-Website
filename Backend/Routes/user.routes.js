@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken');
 const {BlacklistModel}=require('../Model/Blacklist.model');
 const {authMiddleware}=require('../Middleware/Auth.middleware')
 const {User_appointmentModel}=require('../Model/User_Appointment.model')
+const { getIO } = require('../socket'); 
 
 userRoutes.post('/register',async(req,res)=>{
     try {
@@ -40,7 +41,7 @@ userRoutes.post('/login',async(req,res)=>{
         if (!isPasswordMatch) {
           return res.status(401).json({ msg: 'Invalid username or password' });
         }
-        const token = jwt.sign({ userId: user._id}, "raxita", {
+        const token = jwt.sign({ userId: user._id}, process.env.SecretKey, {
           expiresIn: '7d'
         });
         res.status(200).json({ msg: 'Login Successfully' ,Token:token,name:user.name});
@@ -70,10 +71,22 @@ userRoutes.post('/logout' ,async (req, res) => {
   });
 userRoutes.post('/appointment',authMiddleware,async(req,res)=>{
   try {
-    const { username,email,mobile,city,petname,species,breed,age,gender,weight,resaon,date,time,urgency_level,note,doctor_id} =req.body;
-    const adddata=new User_appointmentModel({ username,email,mobile,city,petname,species,breed,age,gender,weight,resaon,  date,time,urgency_level,note,doctor_id})
-        await adddata.save()
-        res.status(200).json({ msg: 'Appointment booking successfully' });
+    
+    const {name,email,mobile,city,_id}=req.body.user
+    const {petname,date,time,urgency_level,note,doctor_id} =req.body;
+   
+    const adddata=new User_appointmentModel({name,email,mobile,city,petname,date,time,urgency_level,note,doctor_id,user_id:_id})
+    await adddata.save()
+    const notificationData = {
+      type: 'appointment',
+      message: 'New appointment confirmed!',
+      appointmentDetails: adddata,
+      DoctorID:doctor_id
+    };
+    const io = getIO();
+    console.log(notificationData)
+    io.emit('notification', notificationData);
+     res.status(200).json({ msg: 'Appointment booking successfully' });
 
   } catch (error) {
     res.status(400).json({
@@ -83,6 +96,76 @@ userRoutes.post('/appointment',authMiddleware,async(req,res)=>{
   });
   }
 })
+userRoutes.get("/getapp/:id",async(req,res)=>{
+
+  try {
+    const data=await User_appointmentModel.find({user_id:req.params.id})
+    res.json(data)
+  } catch (error) {
+    console.log(error)
+  }
+})
+userRoutes.get("/get",async(req,res)=>{
+
+  try {
+    const data=await User_appointmentModel.find()
+    res.json(data)
+  } catch (error) {
+    console.log(error)
+  }
+})
+
 module.exports={
     userRoutes
 }
+// userRoutes.post('/appointment', authMiddleware, async (req, res) => {
+//   try {
+//     const { doctor_id, ...appointmentData } = req.body; // Destructure the doctor_id from the request body
+
+//     // Save the appointment in the database
+//     const adddata = new User_appointmentModel(appointmentData);
+//     await adddata.save();
+
+//     // Notify the connected doctor dashboard about the new appointment
+//     const notificationData = {
+//       type: 'appointment',
+//       message: 'New appointment confirmed!',
+//       appointmentDetails: { ...appointmentData },
+//     };
+
+//     // Broadcast the notification to all connected doctor dashboards
+//     io.to(doctor_id).emit('notification', notificationData);
+
+//     res.status(200).json({ msg: 'Appointment booking successful' });
+//   } catch (error) {
+//     res.status(400).json({
+//       isError: true,
+//       msg: 'Something went wrong!!!',
+//       error: error,
+//     });
+//   }
+// });
+
+
+
+
+
+ // Connect to the WebSocket server
+//  const socket = io();
+
+//  // Listen for 'notification' events
+//  socket.on('notification', (notificationData) => {
+//    handleNotification(notificationData);
+//  });
+
+//  // Function to handle the notification and display it on the dashboard
+//  function handleNotification(notificationData) {
+//    const notificationsDiv = document.getElementById('notifications');
+//    const notificationMessage = document.createElement('p');
+//    notificationMessage.textContent = notificationData.message;
+//    notificationsDiv.appendChild(notificationMessage);
+
+//    // You can also access the appointment details from notificationData.appointmentDetails
+//    // and display them on the dashboard as needed.
+//  }
+
