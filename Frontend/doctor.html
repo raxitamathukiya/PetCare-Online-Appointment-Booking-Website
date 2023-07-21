@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <h1>Doctor notification</h1>
+    <div id="root">
+
+    </div>
+</body>
+<script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+<script>
+     const socket = io('http://localhost:8080', { transports: ["websocket"] });
+    //console.log(socket)
+ // Listen for 'notification' events
+ let localdid="64b67d139757cb553098bc3e"
+ socket.on('notification', (notificationData) => {
+    console.log(notificationData)
+    if(notificationData.DoctorID==localdid){
+        handleNotification(notificationData);
+    }
+  
+ });
+
+ // Function to handle the notification and display it on the dashboard
+
+ function handleNotification(notificationData) {
+   const notificationsDiv = document.getElementById('root');
+   let card=document.createElement("div");
+   const notificationMessage = document.createElement('p');
+   notificationMessage.textContent = notificationData.message;
+    let btn=document.createElement("button");
+    btn.innerText="confirm";
+    btn.addEventListener("click",(e)=>{
+        e.preventDefault();
+        alert("confirmed");
+    });
+   card.append(notificationMessage,btn);
+   notificationsDiv.append(card);
+
+   // You can also access the appointment details from notificationData.appointmentDetails
+   // and display them on the dashboard as needed.
+ }
+
+
+</script>
+</html>
