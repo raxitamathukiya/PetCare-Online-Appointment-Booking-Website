@@ -1,11 +1,13 @@
 
 const {Router} = require("express");
 const {DoctorModel}= require("../Model/doctor.model");
+const {User_appointmentModel}=require("../Model/User_Appointment.model");
 const doctorRouter= Router();
 const bcrypt=require("bcrypt");
 const jwt=require("jsonwebtoken");
 const {BlacklistModel}=require("../Model/Blacklist.model");
 const {auth}=require("../Middleware/auth.doctors.middleware");
+const {transporter}=require("../Middleware/nodemailer");
 
 doctorRouter.post("/register", async (req,res)=>{
     const {email,password}=req.body;
@@ -162,6 +164,47 @@ doctorRouter.get("/:id",async(req,res)=>{
         });
     }
 });
+
+// send mail  
+
+doctorRouter.post("/sendmail/:id",async(req,res)=>{
+    const id=req.params.id;
+    const {email,UserID,name}=req.body;
+    
+    try{
+
+        const Appoint_ID=Math.floor((Math.random()*100000000)+1);
+        
+        let mailOptions = {
+            from: 'sambhajisd4@gmail.com',
+            to: email,
+            subject: 'Appointment Confirmed',
+            text: `YOUR Appointment is confirmed by Dr. ${name}
+            OPPOINTMENT DETAILS :-
+
+            Appointment ID  :-  ${Appoint_ID}
+            Date :- ${date}
+            Time :- ${time}
+
+                thank you
+                 PetCare
+            `
+        };
+
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                res.send('Error sending email');
+            } else {
+                res.send('Email sent successfully');
+            }
+        });
+        
+
+    }catch(err){
+        res.status(401).send(err);
+    }
+})
+
 
 
 
