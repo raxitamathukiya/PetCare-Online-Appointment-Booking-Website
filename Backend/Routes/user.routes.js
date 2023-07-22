@@ -96,76 +96,67 @@ userRoutes.post('/appointment',authMiddleware,async(req,res)=>{
   });
   }
 })
-userRoutes.get("/getapp/:id",async(req,res)=>{
+userRoutes.get("/getapp/:id",authMiddleware,async(req,res)=>{
 
   try {
     const data=await User_appointmentModel.find({user_id:req.params.id})
-    res.json(data)
+    res.status(200).json(data)
   } catch (error) {
-    console.log(error)
+    res.status(400).json({
+      isError:true,
+      msg:"Something went wrong !!!!",
+      error:error
+  });
   }
 })
 userRoutes.get("/get",async(req,res)=>{
 
   try {
     const data=await User_appointmentModel.find()
-    res.json(data)
+    res.status(200).json(data)
   } catch (error) {
-    console.log(error)
+    res.status(400).json({
+      isError:true,
+      msg:"Something went wrong !!!!",
+      error:error
+  });
   }
 })
+
+userRoutes.delete("/delete/:id",authMiddleware,async(req,res)=>{
+try {
+  const { id } = req.params;
+  const deletedData = await User_appointmentModel.findByIdAndDelete(id);
+  if (!deletedData) {
+    return res.status(404).json({ msg: 'Appointment not found' });
+  }
+  res.status(200).json({ msg: 'Appointment deleted successfully' });
+} catch (error) {
+  res.status(400).json({
+    isError:true,
+    msg:"Something went wrong !!!!",
+    error:error
+});
+}
+
+})
+
+userRoutes.put("/update/:id",authMiddleware,async(req,res)=>{
+  try {
+    const {id}=req.params 
+        const updata=req.body
+        const data= await User_appointmentModel.findByIdAndUpdate({_id:id},updata)
+        res.status(200).json({ msg: 'Appointment updated successfully'});
+  } catch (error) {
+    res.status(400).json({
+      isError:true,
+      msg:"Something went wrong !!!!",
+      error:error
+  });
+  }
+  
+  })
 
 module.exports={
     userRoutes
 }
-// userRoutes.post('/appointment', authMiddleware, async (req, res) => {
-//   try {
-//     const { doctor_id, ...appointmentData } = req.body; // Destructure the doctor_id from the request body
-
-//     // Save the appointment in the database
-//     const adddata = new User_appointmentModel(appointmentData);
-//     await adddata.save();
-
-//     // Notify the connected doctor dashboard about the new appointment
-//     const notificationData = {
-//       type: 'appointment',
-//       message: 'New appointment confirmed!',
-//       appointmentDetails: { ...appointmentData },
-//     };
-
-//     // Broadcast the notification to all connected doctor dashboards
-//     io.to(doctor_id).emit('notification', notificationData);
-
-//     res.status(200).json({ msg: 'Appointment booking successful' });
-//   } catch (error) {
-//     res.status(400).json({
-//       isError: true,
-//       msg: 'Something went wrong!!!',
-//       error: error,
-//     });
-//   }
-// });
-
-
-
-
-
- // Connect to the WebSocket server
-//  const socket = io();
-
-//  // Listen for 'notification' events
-//  socket.on('notification', (notificationData) => {
-//    handleNotification(notificationData);
-//  });
-
-//  // Function to handle the notification and display it on the dashboard
-//  function handleNotification(notificationData) {
-//    const notificationsDiv = document.getElementById('notifications');
-//    const notificationMessage = document.createElement('p');
-//    notificationMessage.textContent = notificationData.message;
-//    notificationsDiv.appendChild(notificationMessage);
-
-//    // You can also access the appointment details from notificationData.appointmentDetails
-//    // and display them on the dashboard as needed.
-//  }
-
