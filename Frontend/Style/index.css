@@ -1,3 +1,16 @@
+/* .main-body{
+    width: 100%;
+    display: flex;
+    margin-bottom: 3%;
+} */
+
+
+/* *******************************shop the guide**************************** */
+
+
+
+/* ******************************FOOTER*************************** */
+
 .footer{
     /* border: 2px solid red; */
     width: 90%;
@@ -456,5 +469,10 @@ margin: 5% auto;
         background-color: #4c50e0;;
         height: 50px;
         font-weight: bold;
+    }.middlecointainer>div{
+        padding: 10px;
+
+    }.middlecointainer{
+        padding: 20px;
     }
       
