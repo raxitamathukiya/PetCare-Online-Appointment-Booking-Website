@@ -7,7 +7,7 @@ h6 {
 }
 .nav-bar {
   height: 50px;
-  background: whitesmoke;
+  background: black;
   position: fixed;
   top: 0;
   width: 100%;
@@ -54,7 +54,7 @@ nav ul li a:visited {
   display: block;
   padding: 0 20px;
   line-height: 5dvh;
-  background: #262626;
+  background: black;
   color: #ffffff;
   text-decoration: none;
 }
@@ -88,20 +88,20 @@ nav ul li ul li a {
   top: 0;
   right: 0;
   background: #262626;
-  height: 70px;
+  height: 50px;
   width: 70px;
 }
  
  @media only screen and (max-width: 798px) {
     /* display: none; */
-  /* nav {
+   nav {
     width: 100%;
     padding: 70px 0 15px;
-  /* } */
-  /* .nav-list{
+   }
+   .nav-list{
     visibility: hidden;
-  }  */
-  /* nav ul li {
+  }  
+   nav ul li {
     float: none;
   }
   nav ul li a {
@@ -120,7 +120,7 @@ nav ul li ul li a {
 	.brand a img {
 		max-height: 50px;
 		margin-top: 5px; 
-	/* }  */
+	 }  
 } 
 
 
@@ -168,7 +168,7 @@ article {
   margin: 0 auto;
   padding: 10px;
 }.middlecointainer{
-    margin-top: 105px;
+    margin-top: 50px;
     /* border: 1px solid red; */
     height: 350px;
     width: 100%;
@@ -349,3 +349,5 @@ article {
  
 
    
+
+  
