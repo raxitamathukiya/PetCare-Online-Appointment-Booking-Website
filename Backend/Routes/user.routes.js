@@ -63,7 +63,7 @@ userRoutes.post('/logout' ,async (req, res) => {
     } catch (error) {
         res.status(400).json({
             isError:true,
-            msg:"Something went wrong !!!!",
+            msg:"internal server error",
             error:error
         });
     

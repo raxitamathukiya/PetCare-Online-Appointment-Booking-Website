@@ -12,6 +12,10 @@ const doctorSchema=mongoose.Schema({
         type:String,
         require:true
     },
+    img:{
+        type:String,
+        require:true
+    },
     email:{
         type:String,
         require:true
