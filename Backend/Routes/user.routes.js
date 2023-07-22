@@ -74,9 +74,10 @@ userRoutes.post('/appointment',authMiddleware,async(req,res)=>{
     
     const {name,email,mobile,city,_id}=req.body.user
     const {petname,date,time,urgency_level,note,doctor_id} =req.body;
-   
+    
     const adddata=new User_appointmentModel({name,email,mobile,city,petname,date,time,urgency_level,note,doctor_id,user_id:_id})
-    await adddata.save()
+    await adddata.save();
+    // console.log(adddata);
     const notificationData = {
       type: 'appointment',
       message: 'New appointment confirmed!',
