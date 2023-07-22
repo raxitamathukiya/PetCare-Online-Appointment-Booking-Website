@@ -308,7 +308,7 @@ margin: 5% auto;
                    FOOTER
     ****************************/
     footer{
-        background-color:var(--primary);
+        background-color:rgb(20,39,76);
         color:var(--lite);
     }
     

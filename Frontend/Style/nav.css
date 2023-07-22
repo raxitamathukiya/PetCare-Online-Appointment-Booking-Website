@@ -6,8 +6,8 @@ h6 {
 	font-family: 'Righteous', cursive;
 }
 .nav-bar {
-  height: 50px;
-  background: black;
+  height: 70px;
+  background:rgb(20,39,76);
   position: fixed;
   top: 0;
   width: 100%;
@@ -24,7 +24,7 @@ h6 {
   font-size: 1.4em;
 }
 .brand a img {
-	max-height: 45px;
+	max-height: 70px;
 }
 .brand a,
 .brand a:visited {
