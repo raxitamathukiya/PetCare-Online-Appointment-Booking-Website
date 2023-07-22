@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Appoint a Doctor</title>
+  <link rel="stylesheet" href="./Style/nav.css">
+  <link rel="stylesheet" href="./Style/index.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      /* padding: 20px; */
+    }
+
+    .appointment-container {
+      display: flex;
+      align-items: flex-start; 
+      justify-content: space-around; 
+    }
+
+    .doctor-photo {
+      width: 600px;
+      height: 800px;
+      /* margin-left: 20px;  */
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .appointment-form {
+      max-width: 500px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      flex-grow: 1;
+    }
+
+    .form-group label {
+      font-weight: bold;
+    }
+
+    .submit-btn {
+      background-color: rgb(20,39,76);
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    .submit-btn:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+    <section class="nav-bar">
+        <div class="nav-container">
+          <div class="brand">
+            <a href=""><img src="./pictures/logo-black.png" style="border-radius: 100%;"></a>
+            <a href="" style="margin-left: 20px; font-size: 20px;">Home</a>
+            <a href="" style="margin-left: 20px; font-size: 20px;">Services</a>
+            <a href="" style="margin-left: 20px; font-size: 20px;">About Us</a>
+            <a href="" style="margin-left: 20px; font-size: 20px;">Help</a>
+          </div>
+          <nav>
+            <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
+            <div id="maincontainer">
+                <button style="margin-top: 10px; margin-right: 10px; border: none; border-radius: 10px; height: 50px;"><b>Login as User</b></button>
+                <button style="margin-right: 20px; border: none; border-radius: 10px; height: 50px;"><b>Login as Doctor</b></button>
+                
+            </div>
+          </nav>
+        </div>
+      </section>
+
+
+
+  <h1 class="text-center my-4">Appoint a Doctor</h1>
+  <div class="appointment-container">
+    <div class="appointment-form">
+      <form id="appointmentForm">
+        <div class="form-group mb-3">
+          <label for="Petname">Petname:</label>
+          <input type="text" class="form-control" id="clinicName" required>
+        </div>
+        <div class="form-group mb-3">
+          <label for="date">Date:</label>
+          <input type="date" class="form-control" id="name" required>
+        </div>
+        <div class="form-group mb-3">
+          <label for="email">Time:</label>
+          <input type="email" class="form-control" id="email" required>
+        </div>
+        
+        <div class="form-group mb-3">
+          <label for="city">Note:</label>
+          <input type="text" class="form-control" id="city" line="4" required>
+        </div>
+        <div class="form-group mb-3">
+            <label for="Urgency">Urgency:</label>
+            <select name="" id="">
+              <option value="">Emergency</option>
+              <option value="">Urgent</option>
+              <option value="">Routine</option>
+            </select>
+          </div>
+        <div class="form-group mb-3">
+          <!-- <label for="services">Services:</label> -->
+          <!-- <input type="text" class="form-control" id="services" required> -->
+          <small class="form-text text-muted">Please enter services separated by commas (e.g., Vaccinations, Surgery)</small>
+        </div>
+        <button type="submit" class="submit-btn">Submit</button>
+      </form>
+    </div>
+    <img src="./pictures//pexels-antoni-shkraba-6749778.jpg" alt="Doctor" class="doctor-photo">
+  </div>
+<br>
+<br>
+  <footer class="padding_4x" style="margin-top: 20px;">
+    <div class="flex">
+        <section class="flex-content padding_1x">
+            <h3>About</h3>
+            <a href="#" style="color: white;">Zoom Blog</a>
+            <a href="#" style="color: white;">Customers</a>
+            <a href="#" style="color: white;">Our Team</a>
+            <a href="#" style="color: white;">Careers</a>
+            <a href="#" style="color: white;" >Integrations</a>
+
+        </section>
+        <section class="flex-content padding_1x">
+            <h3>Download</h3>
+            <a href="#" style="color: white;">Meetings Client</a>
+            <a href="#" style="color: white;">Zoom Rooms Client</a>
+            <a href="#" style="color: white;">Zoom Rooms Controller</a>
+            <a href="#" style="color: white;">Browser Extension</a>
+            <a href="#" style="color: white;">Outlook Plug-in</a>
+        </section>
+        <section class="flex-content padding_1x">
+            <h3>Sales
+            </h3>
+            <a href="#" style="color: white;">1.888.799.9666</a>
+            <a href="#" style="color: white;">Contact Sales</a>
+            <a href="#" style="color: white;">Plans & Pricing</a>
+            <a href="#" style="color: white;">Request a Demo</a>
+            <a href="#" style="color: white;">Webinars and Events</a>
+        </section>
+        <section class="flex-content padding_1x">
+            <h3>Support
+            </h3>
+            <a href="#" style="color: white;">Test Talkies</a>
+            <a href="#" style="color: white;">Account</a>
+            <a href="#" style="color: white;">Support Center</a>
+            <a href="#" style="color: white;">Learning Center</a>
+            <a href="#" style="color: white;">Feedback</a>
+            <a href="#" style="color: white;">Contact Us</a>
+        </section>
+        <section class="flex-content padding_1x">
+            <h3 style="color: white;">Newsletter</h3>
+            <p style="color: white;">You can trust us. we only send promo offers,</p>
+            <fieldset class="fixed_flex">
+                
+                
+            </fieldset>
+        </section>
+        
+    </div>
+    <div class="flex">
+        <section class="flex-content padding_1x">
+            <p>Copyright ©2023 All rights reserved || Talkies - Let's connect</p>
+        </section>
+        <section class="flex-content padding_1x">
+            <a href="https://www.facebook.com/zoom"><i class="fa fa-facebook"></i></a>
+            <a href="https://twitter.com/zoom"><i class="fa fa-twitter"></i></a>
+            <a href="https://www.instagram.com/zoom/"><i class="fa fa-dribbble"></i></a>
+            <a href="https://www.linkedin.com/company/zoom-video-communications/"><i class="fa fa-linkedin"></i></a>
+        </section>
+    </div>
+</footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+  <script>
+    document.getElementById("appointmentForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+  
+      alert("Form submitted! (Please handle form submission in JavaScript code.)");
+    });
+  </script>
+</body>
+</html>

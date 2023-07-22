@@ -3,7 +3,7 @@ const {connection}=require("./config/db");
 const {userRoutes}=require('./Routes/user.routes')
 require("dotenv").config();
 const {doctorRouter}=require("./Routes/doctor.routes");
-const { setupSocket } = require('./socket'); // Import the setupSocket function
+const { setupSocket } = require('./socket'); 
 const cors = require('cors');
 
 const app = express();
