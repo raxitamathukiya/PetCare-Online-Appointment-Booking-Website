@@ -145,6 +145,7 @@ doctorRouter.get("/search",async(req,res)=>{
 
 //find perticular doctor by params
 
+
 doctorRouter.get("/:id",async(req,res)=>{
     const {id}=req.params;
     try {
@@ -234,9 +235,77 @@ doctorRouter.post("/sendmail",async(req,res)=>{
 })
 
 // find total booking of perticular doctor
+
+
+
+
+doctorRouter.get("/totalbbokings",auth,async(req,res)=>{
+    // check once UserID  ===>
+     const {UserID}=req.body;
+    try {
+        
+        const data= await User_appointmentModel.find({doctor_id:UserID});
+        
+        res.status(200).json({
+            isError:false,
+            data:data
+            
+        });
+        
+    } catch (error) {
+        res.status(404).json({
+            isError:true,
+            msg:"Did not get Data",
+            error:error
+        });
+    }
+});
+
 // find all confirm appointment
+
+doctorRouter.get("/totalbbokings/:id",async(req,res)=>{
+    const {id}=req.params;
+    try {
+        
+        const data= await User_appointmentModel.find({is_conform:"confirm",doctor_id:id});
+        
+        res.status(200).json({
+            isError:false,
+            data:data
+            
+        });
+        
+    } catch (error) {
+        res.status(404).json({
+            isError:true,
+            msg:"Did not get Data",
+            error:error
+        });
+    }
+});
+
 // find all pending appointment
 
+doctorRouter.get("/totalbbokings/new",async(req,res)=>{
+    const {id}=req.params;
+    try {
+        
+        const data= await User_appointmentModel.find({is_conform:"pending",doctor_id:id});
+        
+        res.status(200).json({
+            isError:false,
+            data:data
+            
+        });
+        
+    } catch (error) {
+        res.status(404).json({
+            isError:true,
+            msg:"Did not get Data",
+            error:error
+        });
+    }
+});
 
 
 
