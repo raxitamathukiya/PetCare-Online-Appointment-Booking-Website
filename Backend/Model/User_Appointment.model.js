@@ -7,7 +7,7 @@ const User_appointmentSchema=mongoose.Schema({
     city:{type:String,require:true},
     petname:{type:String,require:true},
     date:{type:Date,require:true},
-    time:{type:Number,require:true},
+    time:{type:String,require:true},
     urgency_level:{type:String,require:true},
     note:{type:String},
     doctor_id:{type:String,require:true},
