@@ -290,7 +290,9 @@ doctorRouter.get("/totalbbokings/new",async(req,res)=>{
     const {id}=req.params;
     try {
         
-        const data= await User_appointmentModel.find({is_conform:"pending",doctor_id:id});
+        const data= await User_appointmentModel.find({is_conform:"pending",
+        doctor_id
+        :id});
         
         res.status(200).json({
             isError:false,

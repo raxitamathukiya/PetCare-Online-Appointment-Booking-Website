@@ -1,0 +1,79 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+#main_div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    /* border: 1px solid red; */
+}
+#login_div{
+   
+    width: 30%;
+    padding-left: 20px;
+}
+#login_div h3{
+    color: rgb(32, 32, 142);
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 20px;
+}
+#login_div p{
+    margin-top: 40px;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+#login_div input{
+    width: 90%;
+    height: 45px;
+
+}
+#login_btn{
+    margin-top: 40px;
+    width: 90%;
+    height: 45px;
+    margin-bottom: 20px;
+    background-color: rgb(30, 30, 98);
+    border: none;
+    color: aliceblue;
+}
+#login_btn:hover,#create_btn:hover{
+    background-color: rgb(154, 167, 182);
+}
+
+/* ........................................................ */
+
+#login_side_div{
+    /* border: 1px solid green; */
+    width: 30%;
+    padding-left: 50px;
+}
+#login_side_div h4{
+    color: rgb(32, 32, 142);
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 100px;
+    margin-bottom: 20px;
+}
+#login_side_div p{
+    
+    font-size: 15px;
+
+}
+.login_side_sub_div{
+    display: flex;
+    gap: 20px   ;
+    margin-top: 15px;
+}
+#create_btn{
+    width: 85%;
+    padding: 12px 20px;
+    margin-top: 20px;
+    background-color: rgb(30, 30, 98);
+    border: none;
+    color: aliceblue;
+}
