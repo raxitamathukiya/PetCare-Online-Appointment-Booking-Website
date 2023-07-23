@@ -20,9 +20,10 @@ form.addEventListener("submit",(e)=>{
   .then((data)=>{
    
    if(data.token){
+    alert(data.msg);
      localStorage.setItem("name",JSON.stringify(data.name));
      localStorage.setItem("token",JSON.stringify(data.token));
-     window.location.href="/index.html";
+     window.location.href="./index.html";
    }
    
    
