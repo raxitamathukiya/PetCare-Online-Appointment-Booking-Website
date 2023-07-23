@@ -1,0 +1,43 @@
+.container{
+    width: 80%;
+    margin: auto;
+}
+#cont{
+    width: 80%;
+    margin: auto;
+    /* border: 1px solid red; */
+}
+#total{
+    text-align: center;
+}
+.card{
+    margin: auto;
+    margin-top: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 5px 50px 15px 50px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+.statusdiv{
+    text-align: center;
+}
+h3{
+    color: rgb(36, 57, 75);
+}
+span{
+    color: black;
+    font-size: 17px;
+}
+#confirm{
+    color: orange;
+}
+.cancle{
+    padding: 10px;
+    background-color: rgb(250, 73, 73);
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
