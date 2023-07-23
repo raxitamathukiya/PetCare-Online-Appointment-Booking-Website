@@ -1,7 +1,7 @@
 const mongoose=require('mongoose')
 const User_appointmentSchema=mongoose.Schema({
 
-    username:{type:String,require:true},
+    name:{type:String,require:true},
     email:{type:String,require:true},
     mobile:{type:Number,require:true},
     city:{type:String,require:true},

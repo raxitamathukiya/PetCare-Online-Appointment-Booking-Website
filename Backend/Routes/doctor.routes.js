@@ -55,7 +55,8 @@ doctorRouter.post("/login",async(req,res)=>{
                     isError:false,
                     msg:"Login Successful",
                     name:user.name,
-                    token:token
+                    token:token,
+                    dr_id:user._id
                 })
             }else{
                 res.status(400).json({
@@ -93,7 +94,7 @@ doctorRouter.get("/",async(req,res)=>{
     }
 });
 
-doctorRouter.post("/logout",auth,async(req,res)=>{
+doctorRouter.post("/logout",async(req,res)=>{
     try {
         const token= req.headers.authorization.split(" ")[1];
 
@@ -166,6 +167,26 @@ doctorRouter.get("/:id",async(req,res)=>{
         });
     }
 });
+doctorRouter.get("/appointment/:id",async(req,res)=>{
+    const {id}=req.params;
+    try {
+        
+        const data= await User_appointmentModel.find({doctor_id:id,is_conform:"Pendding"});
+        console.log(data)
+        res.status(200).json({
+            isError:false,
+            data:data
+            
+        });
+        
+    } catch (error) {
+        res.status(404).json({
+            isError:true,
+            msg:"Did not get Data",
+            error:error
+        });
+    }
+});
 
 // send mail  
 
@@ -188,8 +209,8 @@ doctorRouter.post("/sendmail",async(req,res)=>{
                 subject: 'Appointment CONFIRMED',
                 text: `
                 Hello ${name},
-                YOUR Appointment is confirmed by Dr. ${data.name}
-                OPPOINTMENT DETAILS :-
+                YOUR Appointment is confirmed by ${data.name}
+                APPOINTMENT DETAILS :-
     
                 Appointment ID  :-  ${Appoint_ID}
                 Date :- ${date}
@@ -210,7 +231,7 @@ doctorRouter.post("/sendmail",async(req,res)=>{
                 subject: 'Appointment CANCLED',
                 text: `
                 Hello ${name},
-                YOUR Appointment is cancled by Dr. ${data.name}
+                YOUR Appointment is cancled by ${data.name}
                 
                 please book appoint for other date.
     

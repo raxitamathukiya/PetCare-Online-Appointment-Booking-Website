@@ -22,7 +22,8 @@ form.addEventListener("submit",(e)=>{
    if(data.token){
      localStorage.setItem("name",JSON.stringify(data.name));
      localStorage.setItem("token",JSON.stringify(data.token));
-     window.location.href="/index.html";
+     localStorage.setItem("dr_id",JSON.stringify(data.dr_id));
+     window.location.href="./doctor_index.html";
    }
    
    
