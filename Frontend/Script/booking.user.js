@@ -1,12 +1,13 @@
 const main=document.getElementById("cont");
-// const id=localStorage.getItem(userid);
+const id=localStorage.getItem(userid);
+const token=localStorage.getItem(token);
 let total=document.getElementById("total");
 total.innerText="Your total Bookings : 0";
-fetch(`http://localhost:8080/user/getapp/64bbbe5f8d73234be5274d04`,{
+fetch(`http://localhost:8080/user/getapp/${id}`,{
     method:"GET",
     headers:{
         "content-type":"application/json",
-        "authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGJiYmU1ZjhkNzMyMzRiZTUyNzRkMDQiLCJpYXQiOjE2OTAxMTQ3NDgsImV4cCI6MTY5MDcxOTU0OH0.n8qQLPnEXNsdAB4LI5d2PdQKPfj7xD-mjRxS7UADaRs"
+        "authorization":`Bearer ${token}`
     }
 })
 .then((res)=>res.json())
@@ -100,7 +101,7 @@ function updateAppointment(id){
 }
 
 function cancleAppointment(id){
-    fetch(`http://localhost:8080/delete/${id}`,{
+    fetch(`http://localhost:8080/user/delete/${id}`,{
         method:"DELETE",
         headers:{
             "content-type":"application/json",
