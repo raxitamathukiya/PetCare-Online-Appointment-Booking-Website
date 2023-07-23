@@ -3,12 +3,106 @@
     padding: 0px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+/* ---------------navbar start here---------------------- */
+
+
+.nav-bar {
+    /* height: 70px; */
+    background:rgb(20,39,76);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    /* padding-top: 10px; */
+  }
+   
+  .brand {
+    /* position: absolute; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    text-align: center;
+    padding: 3px 20px 0px 20px;
+    float: left;
+    /* border: 1px solid red; */
+    
+    text-transform: uppercase;
+    font-size: 1em;
+  }
+  .brand a img {
+      width: 55px;
+  }
+  .brand a,
+  .brand a:visited {
+    color: #f3f3f3;
+    text-decoration: none;
+
+  }
+   
+  nav {
+    float: right;
+  }
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  nav ul li {
+    float: left;
+    position: relative;
+  }
+  nav ul li a,
+  nav ul li a:visited {
+    display: block;
+    padding: 0 20px;
+    line-height: 5dvh;
+    background: black;
+    color: #ffffff;
+    text-decoration: none;
+  }
+  nav ul li a:hover,
+  nav ul li a:visited:hover {
+    background: #2ab1ce;
+    color: #ffffff;
+  }
+  nav ul li a:not(:only-child):after,
+  nav ul li a:visited:not(:only-child):after {
+    padding-left: 4px;
+    content: ' ▾';
+  }
+  nav ul li ul li {
+    min-width: 190px;
+  }
+  nav ul li ul li a {
+    padding: 15px;
+    line-height: 20px;
+  }
+   
+  .nav-dropdown {
+    position: absolute;
+    display: none;
+    z-index: 1;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+  }
+  .nav-mobile {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #262626;
+    height: 50px;
+    width: 70px;
+  }
+
+/* ----------------navbar end here---------------------- */
 #main_div{
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 100px;
+    margin-top: 80px;
     /* border: 1px solid red; */
 }
 #signup_div{
@@ -53,6 +147,7 @@
 }
 .sidediv_class{
     display: flex;
+    align-items: center;
     margin: 20px 0px;
     background-color: rgb(215, 215, 215);
     padding: 10px 10px;
