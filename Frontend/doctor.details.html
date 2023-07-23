@@ -1,12 +1,172 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <title>Clinic Appointments</title>
+  <link rel="stylesheet" href="./Style/nav.css">
+  <link rel="stylesheet" href="./Style//index.css">
+  
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./Style/doctor.details.css">
 </head>
 <body>
-    <h1>doctors details</h1>
+
+    <section class="nav-bar">
+        <div class="nav-container">
+          <div class="brand">
+            <a href="./index.html"><img src="./pictures/logo-black.png" style="border-radius: 100%;"></a>
+            <a href="" style="margin-left: 20px; font-size: 20px;">Home</a>
+            <a href="" style="margin-left: 20px; font-size: 20px;">Services</a>
+            <a href="" style="margin-left: 20px; font-size: 20px;">About Us</a>
+            <a href="" style="margin-left: 20px; font-size: 20px;">Help</a>
+          </div>
+          <nav>
+            <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
+            <div id="maincontainer">
+                <button style="margin-top: 10px; margin-right: 10px; border: none; border-radius: 10px; height: 50px;"><b>Login as User</b></button>
+                <button style="margin-right: 20px; border: none; border-radius: 10px; height: 50px;"><b>Login as Doctor</b></button>
+                
+            </div>
+          </nav>
+        </div>
+      </section>
+
+
+  <div class="container">
+    <h1 style="color:blue" class="text-center my-4">Clinic  Appointments</h1>
+    <div class="row" id="doctorsContainer"></div>
     
+  </div>
+
+
+
+<!-- fOOTER -->
+
+
+<footer class="padding_4x">
+    <div class="flex">
+        <section class="flex-content padding_1x">
+            <h3>About</h3>
+            <a href="#">Zoom Blog</a>
+            <a href="#">Customers</a>
+            <a href="#">Our Team</a>
+            <a href="#">Careers</a>
+            <a href="#">Integrations</a>
+            <a href="#">Partners</a>
+            <a href="#">Investors</a>
+            <a href="#">Talkies Ventures</a>
+            <a href="#">Developer</a>
+
+        </section>
+        <section class="flex-content padding_1x">
+            <h3>Download</h3>
+            <a href="#">Meetings Client</a>
+            <a href="#">Zoom Rooms Client</a>
+            <a href="#">Zoom Rooms Controller</a>
+            <a href="#">Browser Extension</a>
+            <a href="#">Outlook Plug-in</a>
+            <a href="#">iPhone/iPad App</a>
+            <a href="#">Android App</a>
+            <a href="#">Zoom Virtual Backgrounds</a>
+        </section>
+        <section class="flex-content padding_1x">
+            <h3>Sales
+            </h3>
+            <a href="#">1.888.799.9666</a>
+            <a href="#">Contact Sales</a>
+            <a href="#">Plans & Pricing</a>
+            <a href="#">Request a Demo</a>
+            <a href="#">Webinars and Events</a>
+        </section>
+        <section class="flex-content padding_1x">
+            <h3>Support
+            </h3>
+            <a href="#">Test Talkies</a>
+            <a href="#">Account</a>
+            <a href="#">Support Center</a>
+            <a href="#">Learning Center</a>
+            <a href="#">Feedback</a>
+            <a href="#">Contact Us</a>
+            <a href="#">Developer Support</a>
+            <a href="#">Legal Policies</a>
+        </section>
+        <section class="flex-content padding_1x">
+            <h3>Newsletter</h3>
+            <p>You can trust us. we only send promo offers,</p>
+            <fieldset class="fixed_flex">
+                <input type="email" name="newsletter" placeholder="Your Email Address">
+                <button class="btn btn_2">Subscribe</button>
+            </fieldset>
+        </section>
+        
+    </div>
+    <div class="flex">
+        <section class="flex-content padding_1x">
+            <p>Copyright ©2023 All rights reserved || Talkies - Let's connect</p>
+        </section>
+        <section class="flex-content padding_1x">
+            <a href="https://www.facebook.com/zoom"><i class="fa fa-facebook"></i></a>
+            <a href="https://twitter.com/zoom"><i class="fa fa-twitter"></i></a>
+            <a href="https://www.instagram.com/zoom/"><i class="fa fa-dribbble"></i></a>
+            <a href="https://www.linkedin.com/company/zoom-video-communications/"><i class="fa fa-linkedin"></i></a>
+        </section>
+    </div>
+</footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+  <script>
+  
+    fetch("http://localhost:8080/doctor")
+      .then(response => response.json())
+      .then(data => {
+        if (!data.isError) {
+          const doctorsData = data.data;
+
+          function createDoctorCard(doctor) {
+            return `
+              <div class="card">
+                <div id="doctordetail">
+                  <img id="img" src="${doctor.img}" class="card-img-top" alt="${doctor.name}">
+                  <div class="card-body">
+                  <h5 style="color:blue" class="card-title">${doctor.name}</h5>
+                  <p class="card-text"><strong>Clinic:</strong> ${doctor.clinic_name}</p>
+                  <p class="card-text"><strong>Email:</strong> ${doctor.email}</p>
+                  <p class="card-text"><strong>Mobile:</strong> ${doctor.mobile}</p>
+                  <p class="card-text"><strong>City:</strong> ${doctor.city}</p>
+
+                  <p class="card-text"><strong>Address:</strong> ${doctor.address}</p>
+                  <p class="card-text"><strong>Services:</strong> ${doctor.services.join(", ")}</p>
+                  <button style="background-color:green" class="btn btn-primary">Call Now</button>
+                 <span> <button style="background-color:rgb(20,39,76)" class="btn btn-primary" onclick="appointDoctor('${doctor._id}')">Appoint a Doctor</button></span>
+                </div>
+                </div>
+              </div>
+
+            `;
+          }
+
+          const doctorsContainer = document.getElementById('doctorsContainer');
+
+          const doctorId = localStorage.getItem('doc-id');
+          const selectedDoctor = doctorsData.find(doctor => doctor._id === doctorId);
+          if (selectedDoctor) {
+            const doctorCard = createDoctorCard(selectedDoctor);
+            doctorsContainer.innerHTML = doctorCard;
+          } else {
+            doctorsContainer.innerHTML = "<p>No matching doctor found.</p>";
+          }
+        } else {
+          console.error("Error fetching data from the API.");
+        }
+      })
+      .catch(error => {
+        console.error("Error fetching data:", error);
+      });
+    function appointDoctor(doctorId) {
+        window.location.href="./Userform.html"
+    }
+  </script>
 </body>
 </html>
