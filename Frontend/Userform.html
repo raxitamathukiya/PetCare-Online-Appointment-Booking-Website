@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Appoint a Doctor</title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <link rel="stylesheet" href="./Style/nav.css">
   <link rel="stylesheet" href="./Style/index.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
@@ -92,7 +93,7 @@
         </div>
         <div class="form-group mb-3">
           <label for="email">Time:</label>
-          <input type="email" class="form-control" id="email" required>
+          <input type="text" class="form-control" id="email" required>
         </div>
         
         <div class="form-group mb-3">
@@ -101,10 +102,10 @@
         </div>
         <div class="form-group mb-3">
             <label for="Urgency">Urgency:</label>
-            <select name="" id="">
-              <option value="">Emergency</option>
-              <option value="">Urgent</option>
-              <option value="">Routine</option>
+            <select name="" id="Urgency">
+              <option value="Emergency">Emergency</option>
+              <option value="Urgent">Urgent</option>
+              <option value="Routine">Routine</option>
             </select>
           </div>
         <div class="form-group mb-3">
@@ -112,7 +113,7 @@
           <!-- <input type="text" class="form-control" id="services" required> -->
           <small class="form-text text-muted">Please enter services separated by commas (e.g., Vaccinations, Surgery)</small>
         </div>
-        <button type="submit" class="submit-btn">Submit</button>
+        <button id="btn-submit" type="submit" class="submit-btn">Submit</button>
       </form>
     </div>
     <img src="./pictures//pexels-antoni-shkraba-6749778.jpg" alt="Doctor" class="doctor-photo">
@@ -185,8 +186,57 @@
     document.getElementById("appointmentForm").addEventListener("submit", function(event) {
       event.preventDefault();
   
-      alert("Form submitted! (Please handle form submission in JavaScript code.)");
+      
     });
+
+    let form=document.getElementById("appointmentForm");
+ 
+    let doc_id=localStorage.getItem("doc-id");
+ form.addEventListener("submit",(e)=>{
+  
+  
+    e.preventDefault();
+    console.log(doc_id)
+   obj={
+    "petname":form.clinicName.value,
+    "date":form.name.value,
+    "time":form.email.value,
+    "urgency_level":form.Urgency.value,
+    "note":form.city.value,
+    "doctor_id":doc_id
+   }
+   fetch("http://localhost:8080/user/appointment",{
+    method:"POST",
+    headers:{
+        "authorization":`Bearer ${localStorage.getItem("token")}`,
+        "Content-type":"application/json"
+    },
+    body:JSON.stringify(obj)
+   })
+   .then((res)=>{
+    return res.json();
+   })
+   .then((data)=>{
+    console.log(data)
+    
+    
+    
+   })
+ })
+ 
+ let btn=document.querySelector("#btn-submit");
+ btn.addEventListener("click",()=>{
+  Swal.fire(
+                            'Appointed',
+                            'Successful',
+                            'success'
+                        )
+                        setTimeout(() => {
+
+                            window.location.href = "./index.html"
+                        }, 2000);
+ })
+
   </script>
 </body>
 </html>

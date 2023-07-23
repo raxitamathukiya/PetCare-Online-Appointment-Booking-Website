@@ -1,51 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./Style/login.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"
-        integrity="sha256-2Dbg51yxfa7qZ8CSKqsNxHtph8UHdgbzxXF9ANtyJHo=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.min.css"
-        integrity="sha256-7jUS+MWeqkFdmW9ozkZ7mPagz+QmMbsBlt+Q3MsE+FU=" crossorigin="anonymous">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
-
 <body>
-    <div id="loader-overlay">
-        <div id="loader"></div>
-    </div>
-    <div id="container">
-        <h1 style="color: #FF0800; text-align: center;cursor: pointer;" id="bshub">Login</h1>
-        <div id="ifd">
-            <h4 class="in">Email Address</h4>
-            <input id="input1" type="email" placeholder="Username">
-            <h4 class="in">Password</h4>
-            <input id="input2" type="password" placeholder="Password">
-            <div class="cen">
-                <div id="button">
-                    <button id="b1">LOG IN</button>
-                </div>
-                <br>
-                <div>
-                    <a class="google-sign-in" href="https://legit-lawyer-ega4.onrender.com/user/auth/google"><span
-                            class="icon"></span><span class="buttonText">Sign in
-                            with Google</span></a>
-                </div>
-                <a id="forgot" href="./forgotpassword.html">Forgot your password?</a>
+  <div class="container">
+    <form id="loginForm">
+      <h2>Login</h2>
+      <input type="text" placeholder="Username" id="username">
+      <input type="password" placeholder="Password" id="password">
+      <button id="btn" type="submit">Login</button>
+    </form>
+    
+  </div>
 
-                <p id="p">Not a member?</p>
-                <a id="signup" class="ank" href="signup.html">Sign Up</a>
-            </div>
+  <script>
+    const loginForm = document.getElementById('loginForm');
 
-        </div>
 
-    </div>
+loginForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    Swal.fire({
+  icon: 'error',
+  title: 'Oops...',
+  text: 'Something went wrong!',
+  footer: '<a href="">Why do I have this issue?</a>'
+})
+       console.log("hy")
+    })
+
+  </script>
 </body>
-
-<script src="./js/login.js"></script>
-
 </html>
