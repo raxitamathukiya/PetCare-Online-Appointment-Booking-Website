@@ -65,6 +65,7 @@ userRoutes.post('/logout' ,async (req, res) => {
             isError:true,
             msg:"internal server error",
             error:error
+
         });
     
     }
@@ -110,6 +111,7 @@ userRoutes.get("/getapp/:id",authMiddleware,async(req,res)=>{
   });
   }
 })
+
 userRoutes.get("/get",async(req,res)=>{
 
   try {
@@ -124,7 +126,7 @@ userRoutes.get("/get",async(req,res)=>{
   }
 })
 
-userRoutes.delete("/delete/:id",authMiddleware,async(req,res)=>{
+userRoutes.delete("/delete/:id",async(req,res)=>{
 try {
   const { id } = req.params;
   const deletedData = await User_appointmentModel.findByIdAndDelete(id);
@@ -157,7 +159,20 @@ userRoutes.put("/update/:id",authMiddleware,async(req,res)=>{
   }
   
   })
+  userRoutes.get("/getuser/:id",async(req,res)=>{
 
+    try {
+      const data=await UserModel.find({_id:req.params.id})
+      res.status(200).json(data)
+    } catch (error) {
+      res.status(400).json({
+        isError:true,
+        msg:"Something went wrong !!!!",
+        error:error
+    });
+    }
+  })
 module.exports={
     userRoutes
+
 }
