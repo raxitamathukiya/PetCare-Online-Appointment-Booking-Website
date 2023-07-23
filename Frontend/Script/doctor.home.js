@@ -2,14 +2,11 @@ let notification=document.getElementById("notification");
 let allbookings=document.getElementById("all-bookoing");
 let seebooking=document.getElementById("see-booking");
 
-window.addEventListener("load",()=>{
-    localStorage.setItem("token","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoia2FscGVzaCBrb2xpIiwiVXNlcklEIjoiNjRiNjdkMTM5NzU3Y2I1NTMwOThiYzNlIiwiaWF0IjoxNjg5OTc2NzEzLCJleHAiOjE2OTA1ODE1MTN9.2TyP9_1KIq_j56aJjZtXMyXQlv3S6VdjRe32ojEJStc");
-})
 
 let container=document.getElementById("container");
 
 seebooking.addEventListener("click",()=>{
-    fetch("http://localhost:8080/doctor/totalbbokings/new",{
+    fetch("https://petcare-oj1q.onrender.com/doctor/totalbbokings/new",{
         method:"GET",
         Headers:{
             "content-type":"application/json",

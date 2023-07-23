@@ -60,18 +60,17 @@
     <section class="nav-bar">
         <div class="nav-container">
           <div class="brand">
-            <a href=""><img src="./pictures/logo-black.png" style="border-radius: 100%;"></a>
-            <a href="" style="margin-left: 20px; font-size: 20px;">Home</a>
-            <a href="" style="margin-left: 20px; font-size: 20px;">Services</a>
-            <a href="" style="margin-left: 20px; font-size: 20px;">About Us</a>
-            <a href="" style="margin-left: 20px; font-size: 20px;">Help</a>
+            <a href="./user_index.html"><img src="./pictures/logo-black.png" style="border-radius: 100%;"></a>
+        <a href="./user_index.html" style="margin-left: 20px; font-size: 20px;">Home</a>
+        <a href="./userdata.html" style="margin-left: 20px; font-size: 20px;">Book Appointment</a>
+        <a href="./bookings,user.html" style="margin-left: 20px; font-size: 20px;">Appointment</a>
+        <a href="" style="margin-left: 20px; font-size: 20px;">Services</a>
           </div>
           <nav>
             <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
             <div id="maincontainer">
-                <button style="margin-top: 10px; margin-right: 10px; border: none; border-radius: 10px; height: 50px;"><b>Login as User</b></button>
-                <button style="margin-right: 20px; border: none; border-radius: 10px; height: 50px;"><b>Login as Doctor</b></button>
-                
+              <button style="margin-top: 10px; margin-right: 10px; border: none; border-radius: 15px; padding: 10px; background-color: aqua;"><b id="user"></b></button>
+              <button style="margin-top: 10px; margin-right: 10px; border: none; border-radius: 15px; padding: 10px; background-color: aqua;" id="Logout"><b>Logout</b></button> 
             </div>
           </nav>
         </div>
@@ -190,7 +189,7 @@
     });
 
     let form=document.getElementById("appointmentForm");
- 
+ let token=JSON.parse(localStorage.getItem("token"))
     let doc_id=localStorage.getItem("doc-id");
  form.addEventListener("submit",(e)=>{
   
@@ -205,10 +204,10 @@
     "note":form.city.value,
     "doctor_id":doc_id
    }
-   fetch("http://localhost:8080/user/appointment",{
+   fetch("https://petcare-oj1q.onrender.com/user/appointment",{
     method:"POST",
     headers:{
-        "authorization":`Bearer ${localStorage.getItem("token")}`,
+        "authorization":`Bearer ${token}`,
         "Content-type":"application/json"
     },
     body:JSON.stringify(obj)
@@ -233,10 +232,41 @@
                         )
                         setTimeout(() => {
 
-                            window.location.href = "./index.html"
+                            window.location.href = "./bookings,user.html"
                         }, 2000);
  })
 
   </script>
+
+<script>
+  let user=document.getElementById('user')
+  let name=JSON.parse(localStorage.getItem('name'))
+ // let token=JSON.parse(localStorage.getItem('token'))
+  user.innerText=name
+  Logout=document.getElementById('Logout')
+  Logout.addEventListener("click",async()=>{
+     try {
+         let res= await fetch('https://petcare-oj1q.onrender.com/user/logout',{
+                     method:"POST",
+                     mode:"cors",
+                     headers:{
+                         'Content-type':'application/json' ,
+                         'Authorization': `Bearer ${token}`
+                     },
+                   
+                   })
+                   let data= await res.json()
+                   alert(data.msg)
+                   localStorage.setItem("name","");
+                     localStorage.setItem("token","");
+                   window.location.href="./index.html"
+                   
+     } catch (error) {
+         console.log(error)
+     }
+  })
+ </script>
+ 
+ 
 </body>
 </html>

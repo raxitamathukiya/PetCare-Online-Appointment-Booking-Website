@@ -7,7 +7,7 @@ let user=document.getElementById('user')
   Logout=document.getElementById('Logout')
   Logout.addEventListener("click",async()=>{
      try {
-         let res= await fetch('http://localhost:8080/doctor/logout',{
+         let res= await fetch('https://petcare-oj1q.onrender.com/doctor/logout',{
                      method:"POST",
                      mode:"cors",
                      headers:{
@@ -32,7 +32,7 @@ const root=document.getElementById('Appointment');
 const fetchdata=(async()=>{
 
     try {
-      let res= await fetch(`http://localhost:8080/doctor/appointment/${id}`,{
+      let res= await fetch(`https://petcare-oj1q.onrender.com/doctor/appointment/${id}`,{
         method:"GET",
         mode:"cors",
         headers:{
@@ -93,7 +93,7 @@ function display(data){
                 _id:element._id
             }
                     try {
-                let res= await fetch('http://localhost:8080/doctor/sendmail/?status=false',{
+                let res= await fetch('https://petcare-oj1q.onrender.com/doctor/sendmail/?status=false',{
                     method:"POST",
                     mode:"cors",
                     headers:{
@@ -128,7 +128,7 @@ function display(data){
                 _id:element._id
             }
                     try {
-                let res= await fetch('http://localhost:8080/doctor/sendmail/?status=true',{
+                let res= await fetch('https://petcare-oj1q.onrender.com/doctor/sendmail/?status=true',{
                     method:"POST",
                     mode:"cors",
                     headers:{

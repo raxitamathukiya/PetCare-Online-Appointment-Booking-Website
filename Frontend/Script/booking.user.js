@@ -1,9 +1,35 @@
 const main=document.getElementById("cont");
-const id=localStorage.getItem(userid);
-const token=localStorage.getItem(token);
+const id=localStorage.getItem("userid");
+const token=JSON.parse(localStorage.getItem("token"))
 let total=document.getElementById("total");
+let user=document.getElementById('user')
+let name=localStorage.getItem('name')
+
+user.innerText=name
+Logout=document.getElementById('Logout')
+Logout.addEventListener("click",async()=>{
+   try {
+       let res= await fetch('https://petcare-oj1q.onrender.com/user/logout',{
+                   method:"POST",
+                   mode:"cors",
+                   headers:{
+                       'Content-type':'application/json' ,
+                       'Authorization': `Bearer ${token}`
+                   },
+                 
+                 })
+                 let data= await res.json()
+                 alert(data.msg)
+                 localStorage.setItem("name","");
+                   localStorage.setItem("token","");
+                 window.location.href="./index.html"
+                 
+   } catch (error) {
+       console.log(error)
+   }
+})
 total.innerText="Your total Bookings : 0";
-fetch(`http://localhost:8080/user/getapp/${id}`,{
+fetch(`https://petcare-oj1q.onrender.com/user/getapp/${id}`,{
     method:"GET",
     headers:{
         "content-type":"application/json",
@@ -12,9 +38,11 @@ fetch(`http://localhost:8080/user/getapp/${id}`,{
 })
 .then((res)=>res.json())
 .then((data)=>{
-    //  console.log(data);
+     console.log(data);
     total.innerText=`Your total Bookings : ${data.length}`;
     showdata(data);
+}).catch((error)=>{
+    console.log(error)
 })
 
 function showdata(data){
@@ -101,7 +129,7 @@ function updateAppointment(id){
 }
 
 function cancleAppointment(id){
-    fetch(`http://localhost:8080/user/delete/${id}`,{
+    fetch(`https://petcare-oj1q.onrender.com/user/delete/${id}`,{
         method:"DELETE",
         headers:{
             "content-type":"application/json",

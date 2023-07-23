@@ -50,7 +50,7 @@
   <section class="nav-bar">
   <div class="nav-container">
     <div class="brand">
-      <a href=""><img src="./pictures/logo-black.png" style="border-radius: 100%;"></a>
+      <a href="./doctor_index.html"><img src="./pictures/logo-black.png" style="border-radius: 100%;"></a>
       <a href="./doctor_index.html" style="margin-left: 20px; font-size: 20px;">Home</a>
       <a href="./doctor_dashbord.html" style="margin-left: 20px; font-size: 20px;">Appointment</a>
       <a href="" style="margin-left: 20px; font-size: 20px;">Services</a>
@@ -408,7 +408,7 @@
 </body>
 <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
 <script>
-     const socket = io('http://localhost:8080', { transports: ["websocket"] });
+     const socket = io('https://petcare-oj1q.onrender.com', { transports: ["websocket"] });
     //console.log(socket)
  // Listen for 'notification' events
  let localdid=JSON.parse(localStorage.getItem('dr_id'))
@@ -447,7 +447,7 @@
  Logout=document.getElementById('Logout')
  Logout.addEventListener("click",async()=>{
     try {
-        let res= await fetch('http://localhost:8080/doctor/logout',{
+        let res= await fetch('https://petcare-oj1q.onrender.com/doctor/logout',{
                     method:"POST",
                     mode:"cors",
                     headers:{

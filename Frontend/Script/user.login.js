@@ -7,7 +7,7 @@ form.addEventListener("submit",(e)=>{
    email:form.email.value,
    password:form.Password.value
   }
-  fetch("http://localhost:8080/user/login",{
+  fetch("https://petcare-oj1q.onrender.com/user/login",{
    method:"POST",
    headers:{
        "Content-type":"application/json"
@@ -27,7 +27,7 @@ form.addEventListener("submit",(e)=>{
   
 
      localStorage.setItem("userid",(data.userid));
-     window.location.href="./index.html";
+     window.location.href="./user_index.html";
 
    }
    

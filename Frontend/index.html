@@ -35,8 +35,8 @@
   <section class="nav-bar">
   <div class="nav-container">
     <div class="brand">
-      <a href=""><img src="./pictures/logo-black.png" style="border-radius: 100%;"></a>
-      <a href="" style="margin-left: 20px; font-size: 20px;">Home</a>
+      <a href="./index.html"><img src="./pictures/logo-black.png" style="border-radius: 100%;"></a>
+      <a href="./index.html" style="margin-left: 20px; font-size: 20px;">Home</a>
       <a href="" style="margin-left: 20px; font-size: 20px;">Services</a>
       <a href="" style="margin-left: 20px; font-size: 20px;">About Us</a>
       <a href="" style="margin-left: 20px; font-size: 20px;">Help</a>
@@ -392,53 +392,6 @@
 
 </html>
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-  var popupOverlay = document.querySelector(".popup-overlay");
-  var closeBtn = document.querySelector(".close-btn");
-  popupOverlay.style.display = "none";
-  // Show the popup after a delay
-  setTimeout(function() {
-    popupOverlay.style.display = "flex";
-  }, 6000); // Adjust the delay (in milliseconds) as needed
-
-  // Close the popup when the close button is clicked
-  closeBtn.addEventListener("click", function() {
-    popupOverlay.style.display = "none";
-  });
-});
-// let x="pujan sharma"
-// document.querySelector("#username").innerHTML=`${x}`
-let btn=document.querySelector("#imgoflogin");
-
-btn.addEventListener("click", () => {
-  window.location.href = "./login.html" 
-})
-// let x=localStorage.getItem("user")
-var x = JSON.parse(localStorage.getItem('user')); 
-let btn1=document.querySelector("#btn_for_login")
-// console.log(x.name)
-if(x){
-  document.querySelector("#username").innerHTML=x.name;
-  // window.location.href=""
-}else{
-  let btn2=document.createElement("a");
-  btn2.innerText="Login"
-  btn2.href="./login.html"
-  document.querySelector("#username").appendChild(btn2);
-  // window.location.href="./login.html"
-}
-let usename=document.querySelector("#username");
-let visibledata=document.querySelector(".nav-dropdown")
-visibledata.style.display="none"
-  usename.addEventListener("click", ()=>{
-    visibledata.style.display="block"
-    usename.addEventListener("click", ()=>{
-    visibledata.style.display="none"
-    usename.addEventListener("click", ()=>{
-    visibledata.style.display="block"
-  })
-  })
-})
 </script>
 
 

@@ -9,7 +9,7 @@ form.addEventListener("submit",(e)=>{
         phone:form.phone.value,
         city:form.city.value
     }
-    fetch("http://localhost:8080/user/register",{
+    fetch("https://petcare-oj1q.onrender.com/user/register",{
     method:"POST",
     headers:{
         "Content-type":"application/json"
