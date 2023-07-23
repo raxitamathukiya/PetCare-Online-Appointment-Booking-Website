@@ -44,7 +44,7 @@ userRoutes.post('/login',async(req,res)=>{
         const token = jwt.sign({ userId: user._id}, process.env.SecretKey, {
           expiresIn: '7d'
         });
-        res.status(200).json({ msg: 'Login Successfully' ,Token:token,name:user.name});
+        res.status(200).json({ msg: 'Login Successfully' ,token:token,name:user.name});
       } catch (error) {
         res.status(400).json({
             isError:true,

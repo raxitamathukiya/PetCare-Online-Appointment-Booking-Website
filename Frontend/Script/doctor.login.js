@@ -7,7 +7,7 @@ form.addEventListener("submit",(e)=>{
    email:form.email.value,
    password:form.Password.value
   }
-  fetch("http://localhost:8080/user/login",{
+  fetch("http://localhost:8080/doctor/login",{
    method:"POST",
    headers:{
        "Content-type":"application/json"

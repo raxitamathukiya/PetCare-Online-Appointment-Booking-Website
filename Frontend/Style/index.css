@@ -200,22 +200,12 @@ margin: 5% auto;
         width: -moz-fit-content;
     }
     
-    a, button{
-        /* transition:0.5s; */
-    }
-    
-    /* a, p{
-        font-size:14px;
-    } */
-    
     h1, h2, h3, h4, h5, h6{
         color:var(--primary);
         font-weight:600;
     }
     
-    a, button, input, textarea, select{
-        /* outline:none !important; */
-    }
+    
     
     fieldset{
         border:0;
