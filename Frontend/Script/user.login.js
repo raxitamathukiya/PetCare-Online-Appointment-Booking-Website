@@ -23,6 +23,7 @@ form.addEventListener("submit",(e)=>{
     alert(data.msg);
      localStorage.setItem("name",JSON.stringify(data.name));
      localStorage.setItem("token",JSON.stringify(data.token));
+     localStorage.setItem("userid",JSON.stringify(data.userid));
      window.location.href="./index.html";
    }
    
