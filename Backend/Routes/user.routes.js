@@ -44,7 +44,7 @@ userRoutes.post('/login',async(req,res)=>{
         const token = jwt.sign({ userId: user._id}, process.env.SecretKey, {
           expiresIn: '7d'
         });
-        res.status(200).json({ msg: 'Login Successfully' ,token:token,name:user.name});
+        res.status(200).json({ msg: 'Login Successfully' ,token:token,name:user.name,userid:user._id});
       } catch (error) {
         res.status(400).json({
             isError:true,
@@ -73,7 +73,7 @@ userRoutes.post('/logout' ,async (req, res) => {
 userRoutes.post('/appointment',authMiddleware,async(req,res)=>{
   try {
     
-    const {name,email,mobile,city,_id}=req.body.user
+    const {name,email,mobile,city,_id}=req.body.user;
     const {petname,date,time,urgency_level,note,doctor_id} =req.body;
     
     const adddata=new User_appointmentModel({name,email,mobile,city,petname,date,time,urgency_level,note,doctor_id,user_id:_id})
@@ -99,9 +99,10 @@ userRoutes.post('/appointment',authMiddleware,async(req,res)=>{
   }
 })
 userRoutes.get("/getapp/:id",authMiddleware,async(req,res)=>{
-
+  const {id}=req.params;
   try {
-    const data=await User_appointmentModel.find({user_id:req.params.id})
+    const data=await User_appointmentModel.find({user_id:id});
+    // console.log(data)
     res.status(200).json(data)
   } catch (error) {
     res.status(400).json({
