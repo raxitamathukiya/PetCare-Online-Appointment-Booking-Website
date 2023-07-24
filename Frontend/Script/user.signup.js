@@ -3,7 +3,7 @@ let form=document.getElementById("signup_form");
 form.addEventListener("submit",(e)=>{
     e.preventDefault();
     let obj={
-        firstname:form.firstname.value,
+        name:form.firstname.value,
         email:form.email.value,
         password:form.password.value,
         phone:form.phone.value,
