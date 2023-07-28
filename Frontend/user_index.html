@@ -497,7 +497,7 @@
 
     
   }else{
-    let name =localStorage.getItem('name')
+    let name =JSON.parse(localStorage.getItem('name'))
      token =localStorage.getItem('token')
      user.innerText = name
   }
