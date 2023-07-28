@@ -3,7 +3,7 @@ const id=localStorage.getItem("userid");
 const token=JSON.parse(localStorage.getItem("token"))
 let total=document.getElementById("total");
 let user=document.getElementById('user')
-let name=localStorage.getItem('name')
+let name=JSON.parse(localStorage.getItem('name'))
 
 user.innerText=name
 Logout=document.getElementById('Logout')
