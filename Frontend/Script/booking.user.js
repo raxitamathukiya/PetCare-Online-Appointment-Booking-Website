@@ -19,10 +19,17 @@ Logout.addEventListener("click",async()=>{
                  
                  })
                  let data= await res.json()
-                 alert(data.msg)
+                 Swal.fire(
+                    'Log Out',
+                    'Successful',
+                    'success'
+                  )
+                  setTimeout(() => {
+                    window.location.href = "./index.html"
+                  }, 3000);
                  localStorage.setItem("name","");
                    localStorage.setItem("token","");
-                 window.location.href="./index.html"
+                 
                  
    } catch (error) {
        console.log(error)
