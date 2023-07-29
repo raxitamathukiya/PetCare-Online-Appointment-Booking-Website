@@ -1,9 +1,13 @@
+
+
+
 *{
     margin: 0px;
     box-sizing: border-box;
     padding: 0px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
 /* ---------------navbar start here---------------------- */
 
 
@@ -97,7 +101,7 @@
   }
 
 /* ----------------navbar end here---------------------- */
-#main_div{
+ #main_div{
     width: 100%;
     display: flex;
     justify-content: center;
@@ -105,12 +109,17 @@
     gap: 100px;
     margin-top: 100px;
     /* border: 1px solid red; */
-}
-#login_div{
+} 
+
+
+ #login_div{
    
     width: 30%;
     padding-left: 20px;
-}
+} 
+
+
+
 #login_div h3{
     color: rgb(32, 32, 142);
     font-size: 20px;
@@ -343,5 +352,37 @@ background: #fff;
 
 }.middlecointainer{
     padding: 20px;
-}
+}@media (max-width: 767px) {
+    #main_div {
+      /* Adjust margin-top for mobile */
+      display: flex;
+      flex-direction: column; 
+      justify-content: center;
+      align-items: center;
+      gap: 10px; 
+      margin-top: 100px;
+      width: 100%;;
+      flex-direction: column;
+    } 
+    #login_div{
+      
+       width: 90%;
+       /* padding-left: 20px; */
+   } 
   
+    .container_top_lawer {
+      /* Adjust margin-left for mobile */
+      margin-left: 20px;
+    }
+    #login_side_div{
+        /* border: 1px solid green; */
+        width: 90%;
+        padding-left: 50px;
+    }
+    /* Update other styles for mobile as needed */
+  
+    /* ... */
+  }
+ 
+ 
+ 

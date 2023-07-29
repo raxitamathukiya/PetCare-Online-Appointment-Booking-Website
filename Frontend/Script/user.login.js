@@ -20,12 +20,29 @@ form.addEventListener("submit",(e)=>{
   .then((data)=>{
    
    if(data.token){
-    alert(data.msg);
+    Swal.fire(
+      `${data.msg}`,
+      'Successful',
+      'success'
+  )
+  setTimeout(() => {
+    window.location.href="./user_index.html";
+  }, 3000);
+
      localStorage.setItem("name",JSON.stringify(data.name));
      localStorage.setItem("token",JSON.stringify(data.token));
      localStorage.setItem("userid",(data.userid));
-     window.location.href="./user_index.html";
+     
 
+   }else if(!data.token){
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Something went wrong!',
+    })
+  setTimeout(() => {
+    window.location.href="#";
+  }, 3000);
    }
    
    

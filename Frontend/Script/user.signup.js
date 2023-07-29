@@ -20,7 +20,14 @@ form.addEventListener("submit",(e)=>{
     return res.json();
    })
    .then((data)=>{
-    alert(data.msg);
+    Swal.fire(
+        `${data.msg}`,
+        'Successful',
+        'success'
+      )
+      setTimeout(() => {
+        window.location.href = "./index.html"
+      }, 3000);
     window.location.href="../user.login.html";
     
    })

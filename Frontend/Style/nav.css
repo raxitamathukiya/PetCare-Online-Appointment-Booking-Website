@@ -344,8 +344,52 @@ article {
  padding: 8px 0;
  height: 50px;
 }
+@media (max-width: 767px) {
+  #doctor_ex_picture{
+    display: none;
+  }#img_for_res{
+    width: none;
+  }
+}
+.appointment-container {
+  display: flex;
+  align-items: flex-start; 
+  justify-content: space-around; 
+}
 
+.doctor-photo {
+  width: 600px;
+  height: 800px;
+  /* margin-left: 20px;  */
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
 
+.appointment-form {
+  max-width: 500px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  flex-grow: 1;
+}
+
+.form-group label {
+  font-weight: bold;
+}
+
+.submit-btn {
+  background-color: rgb(20,39,76);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
  
 
    
