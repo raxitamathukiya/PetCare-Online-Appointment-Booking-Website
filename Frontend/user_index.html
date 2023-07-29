@@ -5,7 +5,9 @@
   <meta charset="UTF-8">
   <title>Petcare</title>
   <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
+
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
   <link rel="stylesheet" href="./Style/nav.css">
   <link rel="stylesheet" href="./Style/index.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" rel="stylesheet" />
@@ -476,7 +478,11 @@
           <a href="https://twitter.com/zoom"><i class="fa fa-twitter"></i></a>
           <a href="https://www.instagram.com/zoom/"><i class="fa fa-dribbble"></i></a>
           <a href="https://www.linkedin.com/company/zoom-video-communications/"><i class="fa fa-linkedin"></i></a>
+
         </section>
+
+        </section >
+
       </div>
     </footer>
 
@@ -487,10 +493,31 @@
 </html>
 <script>
   let user = document.getElementById('user')
+
   let name = JSON.parse(localStorage.getItem('name'))
   let token = JSON.parse(localStorage.getItem('token'))
   user.innerText = name
   let Logout = document.getElementById('Logout')
+
+    const urlParams = new URLSearchParams(window.location.search);
+  const userData = JSON.parse(decodeURIComponent(urlParams.get('userdata')));
+  let token
+  console.log(userData);
+  if(userData){
+    let name=userData.name
+    user.innerText = name
+    token = JSON.parse(decodeURIComponent(urlParams.get('token')));
+
+    
+  }else{
+    let name =JSON.parse(localStorage.getItem('name'))
+     token =localStorage.getItem('token')
+     user.innerText = name
+  }
+  // 
+  // 
+  Logout = document.getElementById('Logout')
+
   Logout.addEventListener("click", async () => {
     try {
       let res = await fetch('https://petcare-oj1q.onrender.com/user/logout', {
@@ -503,6 +530,7 @@
 
       })
       let data = await res.json()
+
       Swal.fire(
         'Log Out',
         'Successful',
@@ -515,8 +543,18 @@
       localStorage.setItem("token", "");
       
 
+      alert(data.msg)
+      localStorage.setItem("name", "");
+      localStorage.setItem("token", "");
+      window.location.href = "./index.html"
+
+
     } catch (error) {
       console.log(error)
     }
   })
+
+
+  
+
 </script>
